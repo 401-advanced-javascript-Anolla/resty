@@ -4,11 +4,11 @@ import './header.scss';
 
 const Header = () =>{
   return ( 
-    <Header>
+    <header>
       <h1>
        RESTy
       </h1>
-    </Header>
+    </header>
   );
 };
 
