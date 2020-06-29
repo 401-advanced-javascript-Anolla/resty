@@ -1,16 +1,38 @@
-.main{
-    text-align: center;
-    margin: 1%;
+$backgroundColor: #efefef;
+$radius: 40%;
+
+form {
+  display: inline-block;
+  margin: auto;
+  width: 200px;
+
+  label {
+    display: flex;
+    margin: 1rem 0;
+
+    &.methods {
+      span {
+        cursor: pointer;
+        margin-right: 1rem;
+        padding: .25rem .5rem;
+        background: #ccc;
+
+        &:hover, &.active {
+          background: #fff;
+        }
+      }
+    }
+  }
 }
 
-section{
-    border: 1px solid darkgrey;
-    background-color: whitesmoke;
-    height: 320px;
-    text-align: left;
-    padding: 1%;
-}
+.results {
+  background: #efefef;
+  border: 1px solid #ccc;
+  flex: 1;
+  margin: 1rem;
+  padding: 1rem;
 
-#get,#post,#put,#delete{
-    margin: 1%;
+  span {
+    margin: 1rem;
+  }
 }
