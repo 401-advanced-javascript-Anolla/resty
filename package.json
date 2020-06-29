@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "## Project: RESTy",
   "main": "src/index.js",
-  "homepage": "https://Anolla.github.io/resty/",
+  "homepage": "/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
