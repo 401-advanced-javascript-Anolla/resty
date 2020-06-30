@@ -8,31 +8,27 @@ class Form extends React.Component {
     super(props);
     this.state = {
       url: '',
-      method: '',
+      method: 'get',
       request: {},
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-
     if ( this.state.url && this.state.method ) {
-
-      // Make an object that would be suitable for superagent
-      let request = {
-        url: this.state.url,
-        method: this.state.method,
-      };
-
-      // Clear old settings
-      let url = '';
-      let method = '';
-
-      this.setState({request, url, method});
-      e.target.reset();
-
+      try{
+        const raw = await fetch('https://swapi.dev/api/people/');
+        const data = await raw.json();
+        const results = {
+          Headers : raw.headers,
+          Response : data,
+        };
+        this.props.handler(results);
+      }
+      catch(e){
+        console.log(e);
+      }
     }
-
     else {
       alert('missing information');
     }
