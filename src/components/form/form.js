@@ -17,7 +17,7 @@ class Form extends React.Component {
     e.preventDefault();
     if ( this.state.url && this.state.method ) {
       try{
-        const raw = await fetch('https://swapi.dev/api/people/');
+        const raw = await fetch(`${this.state.url}`);
         const data = await raw.json();
         const results = {
           Headers : raw.headers,
@@ -29,9 +29,11 @@ class Form extends React.Component {
         console.log(e);
       }
     }
+
     else {
       alert('missing information');
     }
+    
   }
 
   handleChangeURL = e => {
@@ -61,7 +63,7 @@ class Form extends React.Component {
           </label>
         </form>
         <section className="results">
-          <span className="method">{this.state.request.method}</span>
+          <span className="method">{this.results}</span>
           <span className="url">{this.state.request.url}</span>
         </section>
       </>
