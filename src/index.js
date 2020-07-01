@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
+import { BrowserRouter } from 'react-router-dom';
 
 class Main extends React.Component {
   render() {
     return (
-      <React.StrictMode>
-        <App />;
-      </React.StrictMode>
+      <BrowserRouter>
+        <React.StrictMode>
+          <App />;
+        </React.StrictMode>
+      </BrowserRouter>
     );
       
   }

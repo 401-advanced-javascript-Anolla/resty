@@ -35,4 +35,18 @@ body {
   }
 }
 
+li{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+a{
+  color: #eee;
+  text-decoration: none;
+  
+}
+a:hover{
+  background-color: gray;
+}
+
 
