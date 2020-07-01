@@ -3,7 +3,7 @@ import ReactJson from 'react-json-view';
 function Results(props) {
   return (
     <>
-      <ReactJson src={props.results} theme="brewer" />
+      <ReactJson src={props.results} theme="bright:inverted" />
     </>
   );
 }

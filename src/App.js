@@ -24,7 +24,9 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <Form  handler={this.handleForm} />
-        <Results results={this.state.results} />
+        <section className="results">
+          <Results results={this.state.results} />
+        </section>
         <Footer />
       </React.Fragment>
     );

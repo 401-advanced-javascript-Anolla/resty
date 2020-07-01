@@ -10,30 +10,32 @@ class Form extends React.Component {
       url: '',
       method: 'get',
       request: {},
+      txt:'',
     };
   }
 
   handleSubmit = async e => {
     e.preventDefault();
-    if ( this.state.url && this.state.method ) {
-      try{
+    try{
+      if ( this.state.url && this.state.method ) {
+          
         const raw = await fetch(`${this.state.url}`);
         const data = await raw.json();
+  
         const results = {
-          Headers : raw.headers,
+          Headers : raw.headers.entries(),
           Response : data,
         };
         this.props.handler(results);
+        
       }
-      catch(e){
-        console.log(e);
+      else {
+        alert('missing information');
       }
     }
-
-    else {
-      alert('missing information');
+    catch(e){
+      console.log(e);
     }
-    
   }
 
   handleChangeURL = e => {
@@ -45,6 +47,7 @@ class Form extends React.Component {
     const method = e.target.id;
     this.setState({ method });
   };
+
 
   render() {
     return (
@@ -62,9 +65,6 @@ class Form extends React.Component {
             <span className={this.state.method === 'delete' ? 'active' : ''} id="delete" onClick={this.handleChangeMethod}>DELETE</span>
           </label>
         </form>
-        <section className="results">
-          
-        </section>
       </>
     );
   }

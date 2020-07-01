@@ -30,9 +30,15 @@ body {
     text-align: center;
   }
   
-  .object-key-val{
-    width: 200px;
+ li{
+   display: inline-block;
+   margin-right: 20px;
   }
+
+  a{
+    color: #eee ;
+    text-decoration: none;
+ }
 }
 
 
