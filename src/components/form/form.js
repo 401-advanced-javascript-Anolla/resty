@@ -2,8 +2,10 @@ import React from 'react';
 
 import './form.scss';
 
+let historyArray=[];
+let infoObj={};
 class Form extends React.Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +16,7 @@ class Form extends React.Component {
     };
   }
 
+  
   handleSubmit = async e => {
     try{
       e.preventDefault();
@@ -30,51 +33,57 @@ class Form extends React.Component {
         }
         // POST
         else if(this.state.method==='post'){
-          fetch(`${this.state.url}`, {
+
+          const raw = await fetch(`${this.state.url}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-          })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Success:', data);
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
+            body:`${this.state.txt}`,
+          });
+          const data = await raw.json();
+          // console.log('Success:', data);
+          this.props.handler(data);
         }
         // PUT
         else if(this.state.method==='put'){
-          fetch(`${this.state.url}`, {
+          const raw= await fetch(`${this.state.url}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
-          })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Success:', data);
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
+            body:`${this.state.txt}`,
+          });
+          const data = await raw.json();
+          // console.log('Success:', data);
+          this.props.handler(data);
         }
         // DELETE
         else if(this.state.method==='delete'){
-          fetch(`${this.state.url}`, {
+          const raw =await fetch(`${this.state.url}`, {
             method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-            },
             // 'id': 2,
-          })
-            .then(response => console.log(response))
-            .catch((error) => {
-              console.error('Error:', error);
-            });
-            
+          });
+          console.log('Success:', raw);
+          // const data = await raw.json();
+          this.props.handler({'Message':'Item deleted'});
         }
+
+        infoObj={'method':this.state.method,'url':this.state.url,'body':this.state.txt? this.state.txt:''};
+        historyArray.push(infoObj);
+        // localStorage.setItem('method',JSON.stringify(this.state.method));
+        // localStorage.getItem('method');
+        // localStorage.setItem('url',JSON.stringify(this.state.url));
+        // localStorage.getItem('url');
+        // if(this.state.txt){
+        //   localStorage.setItem('results' ,JSON.stringify(this.state.txt));
+        //   localStorage.getItem('results');
+        // }
+        localStorage.setItem('history',JSON.stringify(historyArray));
+        let historyString= localStorage.getItem('history');
+        let  historyFromLS= JSON.parse(historyString);
+        this.props.handlerForHistory(historyFromLS);
+        // console.log(historyFromLS);
       }
       else {
         alert('missing information');
