@@ -5,12 +5,12 @@ class History extends React.Component{
 
   // constructor(props) {
   //   super(props);
-  //   this.state = { results: ['anolla','raad'] };
+  //   this.state = { history:[] };
   // }
 
   // componentDidMount(){
-  //   console.log( this.props.history,'history state');
-  //   this.setState({ history: this.props.history });
+  //   const history = JSON.parse(localStorage.getItem('history'));
+  //   this.setState({history});
   // }
 
   render() {

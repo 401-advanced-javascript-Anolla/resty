@@ -4,7 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Results from './components/results/results';
 import History from './components/history/history';
-import Main from './components/main/main';
+// import Main from './components/main/main';
 
 
 import './App.scss';

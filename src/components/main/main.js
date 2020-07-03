@@ -11,7 +11,7 @@ const Main = (props) => {
       {/* <Route exact path="/">
         <Home /> */}
       {/* </Route> */}
-      <Route exact path="/history">
+      <Route exact path="/history" >
         <History />
       </Route>
     </main>
